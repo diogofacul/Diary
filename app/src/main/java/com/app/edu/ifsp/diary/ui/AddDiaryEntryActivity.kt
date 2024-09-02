@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.app.edu.ifsp.diary.data.model.DiaryEntry
-import com.app.edu.ifsp.daily.viewmodel.DiaryEntryViewModel
+import com.app.edu.ifsp.diary.viewmodel.DiaryEntryViewModel
 import com.app.edu.ifsp.diary.databinding.ActivityAddDiaryEntryBinding
 import java.util.Calendar
 

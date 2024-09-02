@@ -1,13 +1,13 @@
-package com.app.edu.ifsp.daily.viewmodel
+package com.app.edu.ifsp.diary.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.app.edu.ifsp.diary.data.database.DiaryDatabase
 import com.app.edu.ifsp.diary.data.model.DiaryEntry
-import com.app.edu.ifsp.diary.data.repository.DiaryEntryRepository
 import kotlinx.coroutines.launch
+import com.app.edu.ifsp.diary.data.repository.DiaryEntryRepository
+import com.app.edu.ifsp.diary.data.database.DiaryDatabase
 
 class DiaryEntryViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: DiaryEntryRepository
