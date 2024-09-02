@@ -1,0 +1,31 @@
+package com.app.edu.ifsp.daily.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import com.app.edu.ifsp.diary.data.database.DiaryDatabase
+import com.app.edu.ifsp.diary.data.model.DiaryEntry
+import com.app.edu.ifsp.diary.data.repository.DiaryEntryRepository
+import kotlinx.coroutines.launch
+
+class DiaryEntryViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: DiaryEntryRepository
+    val allEntries: LiveData<List<DiaryEntry>>
+
+    init {
+        val diaryEntryDao = DiaryDatabase.getDatabase(application).diaryEntryDao()
+        repository = DiaryEntryRepository(diaryEntryDao)
+        allEntries = repository.getAllEntries()
+    }
+
+    fun insert(entry: DiaryEntry) = viewModelScope.launch {
+        repository.insert(entry)
+    }
+
+    fun deleteById(id: Int) = viewModelScope.launch {
+        repository.deleteById(id)
+    }
+
+    suspend fun getEntryById(id: Int): DiaryEntry? = repository.getEntryById(id)
+}
