@@ -34,12 +34,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(inflater)
 
         setContentView(binding.root)
-        adapter = DiaryEntryAdapter { entry ->
-            val intent = Intent(this, AddDiaryEntryActivity::class.java).apply {
-                putExtra("entry_id", entry.id)
+        adapter = DiaryEntryAdapter(
+            onItemClicked = { entry ->
+                val intent = Intent(this, AddDiaryEntryActivity::class.java).apply {
+                    putExtra("entry_id", entry.id)
+                }
+                addDiaryEntryLauncher.launch(intent)
+            },
+            onDeleteClicked = { entry ->
+                viewModel.deleteById(entry.id)
+
             }
-            addDiaryEntryLauncher.launch(intent)
-        }
+        )
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter

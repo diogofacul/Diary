@@ -17,4 +17,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/titleTextView"
         android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF0000"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>
